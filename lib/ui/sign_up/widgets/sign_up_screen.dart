@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport_matcher/ui/core/ui/rounded_button.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -71,7 +72,10 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 ],
               ),
             ),
-            ElevatedButton(onPressed: _onSignUp, child: Text('Sign up'))
+            roundedButton(
+              buttonTitle: 'Sign up',
+              onPressed: _onSignUp,
+            )
           ],
         ),
       ),
