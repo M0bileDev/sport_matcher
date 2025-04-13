@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:sport_matcher/ui/core/ui/rounded_button.dart';
+import 'package:sport_matcher/ui/core/ui/buttons/rounded_button.dart';
+import 'package:sport_matcher/ui/core/ui/text_fields/password_text_field.dart';
+import 'package:sport_matcher/ui/core/ui/text_fields/plain_text_field.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({super.key});
@@ -13,17 +15,9 @@ class SignUpScreen extends StatefulWidget {
 class _SignUpScreenState extends State<SignUpScreen> {
   final _userNameTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
-  bool _obscurePassword = true;
-  IconData _passwordSuffixIcon = Icons.visibility_off;
 
   void _onSignUp() {
     print('Sign up screen _onSignUp has been called');
-  }
-
-  void _switchPasswordVisibility() {
-    setState(() {
-      _obscurePassword = !_obscurePassword;
-    });
   }
 
   @override
@@ -35,9 +29,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
-    _passwordSuffixIcon =
-        _obscurePassword ? Icons.visibility_off : Icons.visibility;
-
     return Scaffold(
       appBar: AppBar(
         title: Text('Sign up'),
@@ -49,26 +40,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
             Expanded(
               child: Column(
                 children: [
-                  TextField(
-                    keyboardType: TextInputType.name,
-                    controller: _userNameTextController,
-                    decoration: InputDecoration(
-                      label: Text('Username'),
-                    ),
-                  ),
+                  PlainTextField(controller: _userNameTextController, title: "Sign in"),
                   SizedBox(
                     height: 16,
                   ),
-                  TextField(
-                    obscureText: _obscurePassword,
-                    controller: _passwordTextController,
-                    decoration: InputDecoration(
-                        label: Text('Password'),
-                        suffixIcon: IconButton(
-                          icon: Icon(_passwordSuffixIcon),
-                          onPressed: _switchPasswordVisibility,
-                        )),
-                  ),
+                  PasswordTextField(controller: _passwordTextController)
                 ],
               ),
             ),

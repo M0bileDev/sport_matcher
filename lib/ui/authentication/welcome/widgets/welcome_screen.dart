@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:sport_matcher/ui/sign_up/widgets/sign_up_screen.dart';
+import 'package:sport_matcher/ui/authentication/sign_in/widgets/sign_in_screen.dart';
+import 'package:sport_matcher/ui/authentication/sign_up/widgets/sign_up_screen.dart';
 
-class AuthenticationScreen extends StatelessWidget {
-  const AuthenticationScreen({super.key});
+class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
+  void _navigateToSignIn(BuildContext buildContext) {
+    Navigator.of(buildContext).push(MaterialPageRoute(
+      builder: (buildContext) => SignInScreen(),
+    ));
+  }
 
   void _navigateToSignUp(BuildContext buildContext) {
     Navigator.of(buildContext).push(MaterialPageRoute(
@@ -27,7 +34,7 @@ class AuthenticationScreen extends StatelessWidget {
                 _roundedButton(
                     buttonTitle: "Sign in",
                     onPressed: () {
-                      print("Sign in");
+                      _navigateToSignIn(context);
                     }),
                 _roundedButton(
                     buttonTitle: "Sign up",
