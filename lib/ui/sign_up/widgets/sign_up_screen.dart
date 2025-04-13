@@ -14,7 +14,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _userNameTextController = TextEditingController();
   final _passwordTextController = TextEditingController();
   bool _obscurePassword = true;
-  IconData? _passwordSuffixIcon;
+  IconData _passwordSuffixIcon = Icons.visibility_off;
 
   void _onSignUp() {
     print('Sign up screen _onSignUp has been called');
