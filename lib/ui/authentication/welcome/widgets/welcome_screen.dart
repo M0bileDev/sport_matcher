@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport_matcher/ui/core/ui/buttons/rounded_button.dart';
 import 'package:sport_matcher/ui/authentication/sign_in/widgets/sign_in_screen.dart';
 import 'package:sport_matcher/ui/authentication/sign_up/widgets/sign_up_screen.dart';
 
@@ -31,44 +32,17 @@ class WelcomeScreen extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                _roundedButton(
+                roundedButton(
                     buttonTitle: "Sign in",
                     onPressed: () {
                       _navigateToSignIn(context);
                     }),
-                _roundedButton(
+                roundedButton(
                     buttonTitle: "Sign up",
                     onPressed: () {
                       _navigateToSignUp(context);
                     })
               ],
             )));
-  }
-
-  Widget _roundedButton(
-      {required String buttonTitle, required VoidCallback onPressed}) {
-    double borderRadius = 30;
-    return SizedBox(
-      width: double.infinity,
-      child: ElevatedButton(
-        onPressed: onPressed,
-        style: ElevatedButton.styleFrom(
-          backgroundColor: Colors.blue,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(borderRadius),
-          ),
-          padding: EdgeInsets.symmetric(
-            horizontal: borderRadius,
-          ),
-        ),
-        child: Text(
-          buttonTitle,
-          style: TextStyle(
-            fontSize: 16.0,
-            color: Colors.white,
-          ),
-        ),
-      ),
-    );
   }
 }
