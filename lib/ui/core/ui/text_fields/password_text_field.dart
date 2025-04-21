@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:sport_matcher/ui/core/utilities/validators/abstract_text_validator.dart';
 
 class PasswordTextField extends StatefulWidget {
   final TextEditingController controller;
+  final AbstractTextValidator? validator;
 
-  const PasswordTextField({super.key, required this.controller});
+  const PasswordTextField({
+    super.key,
+    required  this.controller,
+    this.validator,
+  });
 
   @override
   State<PasswordTextField> createState() => _PasswordTextFieldState();
@@ -20,7 +26,7 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
 
   @override
   Widget build(BuildContext context) {
-    return TextField(
+    return TextFormField(
       obscureText: _obscurePassword,
       controller: widget.controller,
       decoration: InputDecoration(
@@ -36,6 +42,10 @@ class _PasswordTextFieldState extends State<PasswordTextField> {
           onPressed: _togglePasswordVisibility,
         ),
       ),
+      validator: (value) {
+        return widget.validator?.validate(value);
+      },
+      autovalidateMode: AutovalidateMode.onUnfocus,
     );
   }
 }

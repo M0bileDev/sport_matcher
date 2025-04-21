@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:sport_matcher/ui/core/ui/buttons/rounded_button.dart';
 import 'package:sport_matcher/ui/core/ui/text_fields/password_text_field.dart';
 import 'package:sport_matcher/ui/core/ui/text_fields/plain_text_field.dart';
+import 'package:sport_matcher/ui/core/utilities/validators/email_validator.dart';
+import 'package:sport_matcher/ui/core/utilities/validators/minimum_text_length_validator.dart';
 
 class EmailAuthenticationScreen extends StatefulWidget {
-  EmailAuthenticationScreen({super.key, required String title})
+  const EmailAuthenticationScreen({super.key, required String title})
       : _title = title;
 
   final String _title;
@@ -44,11 +46,18 @@ class _EmailAuthenticationScreenState extends State<EmailAuthenticationScreen> {
               child: Column(
                 children: [
                   PlainTextField(
-                      controller: _userNameTextController, title: "Email"),
+                    keyboardType: TextInputType.emailAddress,
+                    controller: _userNameTextController,
+                    title: "Email",
+                    validator: EmailValidator(),
+                  ),
                   SizedBox(
                     height: 16,
                   ),
-                  PasswordTextField(controller: _passwordTextController)
+                  PasswordTextField(
+                    controller: _passwordTextController,
+                    validator: MinimumTextLengthValidator(minimumLength: 12),
+                  )
                 ],
               ),
             ),
