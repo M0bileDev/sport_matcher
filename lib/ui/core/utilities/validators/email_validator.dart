@@ -6,9 +6,9 @@ class EmailValidator extends AbstractTextValidator {
   @override
   String? validate(String? text) {
     if (text == null || text.isEmpty) {
-      return "Email cannot be empty";
+      return "Cannot be empty";
     } else if (!_emailRegex.hasMatch(text)) {
-      return "Please enter a valid email address";
+      return "Invalid email address";
     }
     return null;
   }

@@ -7,16 +7,16 @@ void main() {
     final validator = EmailValidator();
 
     test('should return error message when email is null', () {
-      expect(validator.validate(null), "Email cannot be empty");
+      expect(validator.validate(null), "Cannot be empty");
     });
 
     test('should return error message when email is empty', () {
-      expect(validator.validate(''), "Email cannot be empty");
+      expect(validator.validate(''), "Cannot be empty");
     });
 
     test('should return error message when email is invalid', () {
       final uuid = Uuid();
-      final expectedErrorMessage = "Please enter a valid email address";
+      final expectedErrorMessage = "Invalid email address";
 
       expect(validator.validate(uuid.v4()), expectedErrorMessage);
       expect(validator.validate('${uuid.v4()}@${uuid.v4()}'), expectedErrorMessage);
